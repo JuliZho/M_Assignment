@@ -26,7 +26,7 @@ export const protocolNetworkMap: Record<string, string[]> = {
   Gnosis: ['Mainnet'],
 
   /**
-   * Unable to fetch the transaction hash for, functional tests fail, the reason for this issue was not investigated.
+   * Unable to fetch the transaction hash, functional tests fail, the reason for this issue was not investigated.
    * 
    * Polygon: ['Amoy'],
    * Avalanche: ['Mainnet'],

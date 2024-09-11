@@ -1,6 +1,3 @@
-/**
- * Interface representing the actions and methods for the login page.
- */
 export interface ILoginPage {
   navigate(): Promise<void>;
   acceptCookies(): Promise<void>;

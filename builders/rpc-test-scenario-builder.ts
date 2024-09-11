@@ -18,6 +18,7 @@ export class RpcTestScenarioBuilder {
    */
   async fetchBlockNumber(): Promise<RpcTestScenarioBuilder> {
     this.blockNumber = await this.apiClient.fetchBlockNumber();
+    console.log("Block Number fetched:", this.blockNumber);
     return this;
   }
 
@@ -32,6 +33,7 @@ export class RpcTestScenarioBuilder {
     this.blockDetails = await this.apiClient.fetchBlockDetails(
       this.blockNumber,
     );
+    console.log("Block Details fetched:", this.blockDetails);
     return this;
   }
 
@@ -58,17 +60,21 @@ export class RpcTestScenarioBuilder {
     this.transactionHash = await this.apiClient.fetchTransactionHash(
       this.blockDetails,
     );
+    console.log("Transaction hash:", this.transactionHash);
     return this;
   }
-
+  
   /**
    * Fetches the transaction details for the transaction hash.
    * @returns {Promise<any>} - Returns the details of the transaction.
    * @throws {Error} - Throws an error if the transaction hash is not available.
    */
-  async fetchTransactionDetails(): Promise<any> {
-    if (!this.transactionHash)
-      throw new Error('Transaction hash is not available');
-    return this.apiClient.fetchTransactionDetails(this.transactionHash);
+async fetchTransactionDetails(): Promise<any> {
+  if (!this.transactionHash) {
+    throw new Error('Transaction hash is not available');
   }
+  const transactionDetails = await this.apiClient.fetchTransactionDetails(this.transactionHash);
+  console.log("Transaction details:", transactionDetails);
+  return transactionDetails;
+}
 }
